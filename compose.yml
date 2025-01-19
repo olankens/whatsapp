@@ -1,0 +1,36 @@
+services:
+  postgres:
+    container_name: whatsapp-postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_DB: whatsapp
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - 54321:5432
+    networks:
+      - whatsapp-network
+    restart: unless-stopped
+  keycloak:
+    container_name: whatsapp-keycloak
+    image: quay.io/keycloak/keycloak:26.0.0
+    ports:
+      - 9090:8080
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    networks:
+      - whatsapp-network
+    command:
+      - "start-dev"
+
+networks:
+  whatsapp-network:
+    driver: bridge
+
+volumes:
+  postgres:
+    driver: local
