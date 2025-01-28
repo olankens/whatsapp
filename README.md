@@ -6,7 +6,7 @@ WhatsApp replica powered by Angular and Spring.
 
 # <samp>GUIDANCE</samp>
 
-### Launch the Containers
+### Launch the containers
 
 ```shell
 docker compose up -d
