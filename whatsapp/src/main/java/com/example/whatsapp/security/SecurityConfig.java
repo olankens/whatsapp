@@ -19,7 +19,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -65,9 +64,9 @@ public class SecurityConfig {
                 "GET",
                 "POST",
                 "PUT",
+                "PATCH",
                 "DELETE",
-                "OPTIONS",
-                "PATCH"
+                "OPTIONS"
         ));
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
