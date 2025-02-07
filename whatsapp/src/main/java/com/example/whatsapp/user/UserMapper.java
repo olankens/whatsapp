@@ -9,7 +9,7 @@ import java.util.Map;
 public class UserMapper {
     public User fromTokenAttributes(Map<String, Object> attributes) {
         User user = new User();
-        if (attributes.containsKey("sub")) user.setEmail(attributes.get("sub").toString());
+        if (attributes.containsKey("sub")) user.setId(attributes.get("sub").toString());
         if (attributes.containsKey("given_name")) user.setFirstName(attributes.get("given_name").toString());
         else if (attributes.containsKey("nickname")) user.setFirstName(attributes.get("nickname").toString());
         if (attributes.containsKey("family_name")) user.setLastName(attributes.get("family_name").toString());

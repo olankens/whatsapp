@@ -22,6 +22,8 @@ services:
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - keycloak:/opt/keycloak/data/
     networks:
       - whatsapp-network
     command:
@@ -34,3 +36,4 @@ networks:
 volumes:
   postgres:
     driver: local
+  keycloak:
